@@ -1,0 +1,41 @@
+
+<%- include('partials/header') -%>
+<style>
+  a:hover {
+    color: black;
+  }
+  a {
+    color: black;
+  }
+</style>
+
+<h1>HOME</h1>
+<p><%= startingContent %></p>
+
+ <%posts.forEach(function(item){%>
+ <h1>   <%= item.title %> </h1>
+ <p>   <%=  item.content.substring(0,100) + "..."; %>     
+    <a href="/posts/<%= item._id %>" >Read More</a>    
+</p>
+ 
+    <%})%>
+    <body>
+        <form action="/compose" method="post"></form>
+        <button id="compose-button">Compose</button>
+      
+        
+      </body>
+
+
+<%-include('partials/footer')-%>
+
+<script>
+    // Get a reference to the compose button element
+    const composeButton = document.getElementById("compose-button");
+  
+    // Add a click event listener to the button
+    composeButton.addEventListener("click", () => {
+      // Redirect to the "/compose" page
+      window.location.href = "/compose";
+    });
+  </script>
